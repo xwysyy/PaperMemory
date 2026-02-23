@@ -1,10 +1,10 @@
 <div id="menu-container" style="display: none">
     <a href="#" tabindex="-1" id="menu-feedback-header"></a>
-    <h3>⋗ Feedback</h3>
+    <h3>⋗ <span data-i18n="menu.feedback">Feedback</span></h3>
 
-    <p>It's the little things that make your research smoother.</p>
+    <p data-i18n="menu.feedbackDesc">It's the little things that make your research smoother.</p>
 
-    <p>Look at the code ; raise issues ; share improvement ideas</p>
+    <p data-i18n="menu.feedbackDesc2">Look at the code ; raise issues ; share improvement ideas</p>
 
     <p>
         <a class="link-in-new-tab" href="https://github.com/vict0rsch/PaperMemory"
@@ -15,9 +15,9 @@
         <em>PaperMemory version: <span id="pm-version"></span></em>
     </p>
 
-    <h3>⋗ Help</h3>
+    <h3>⋗ <span data-i18n="menu.help">Help</span></h3>
 
-    <button class="code-font" style="font-size: 1rem" id="keyboardShortcutsMenu">
+    <button class="code-font" style="font-size: 1rem" id="keyboardShortcutsMenu" data-i18n="menu.userGuide">
         User guide
     </button>
     <br />
@@ -27,10 +27,10 @@
         <a class="link-in-new-tab" href="https://papermemory.org">PaperMemory.org</a>
     </p>
 
-    <h3 class="mt-4">⋗ Configuration</h3>
+    <h3 class="mt-4">⋗ <span data-i18n="menu.configuration">Configuration</span></h3>
 
     <div id="options">
-        <h4>Arxiv.org enhancement</h4>
+        <h4 data-i18n="menu.arxivEnhancement">Arxiv.org enhancement</h4>
         <input
             class="switch"
             type="checkbox"
@@ -38,7 +38,7 @@
             name="checkDownload"
             value="checkDownload"
         />
-        <label for="checkDownload">Add PDF direct download button</label><br /><br />
+        <label for="checkDownload" data-i18n="menu.addPdfDownload">Add PDF direct download button</label><br /><br />
 
         <input
             class="switch"
@@ -47,7 +47,7 @@
             name="checkMd"
             value="checkMd"
         />
-        <label for="checkMd"> Add Markdown Link section</label><br /><br />
+        <label for="checkMd" data-i18n="menu.addMdLink"> Add Markdown Link section</label><br /><br />
 
         <input
             class="switch"
@@ -56,9 +56,9 @@
             name="checkBib"
             value="checkBib"
         />
-        <label for="checkBib"> Add BibTex citation section</label><br /><br />
+        <label for="checkBib" data-i18n="menu.addBibtex"> Add BibTex citation section</label><br /><br />
 
-        <h4>User Interface</h4>
+        <h4 data-i18n="menu.userInterface">User Interface</h4>
 
         <input
             class="switch"
@@ -67,7 +67,7 @@
             name="checkFeedback"
             value="checkFeedback"
         />
-        <label for="checkFeedback"> Display notification when a paper is added</label
+        <label for="checkFeedback" data-i18n="menu.displayNotification"> Display notification when a paper is added</label
         ><br /><br />
 
         <input
@@ -77,7 +77,7 @@
             name="checkDarkMode"
             value="checkDarkMode"
         />
-        <label for="checkDarkMode">Use Dark Mode</label><br /><br />
+        <label for="checkDarkMode" data-i18n="menu.useDarkMode">Use Dark Mode</label><br /><br />
 
         <input
             class="switch"
@@ -86,7 +86,7 @@
             name="checkDirectOpen"
             value="checkDirectOpen"
         />
-        <label for="checkDirectOpen"
+        <label for="checkDirectOpen" data-i18n="menu.directOpenMemory"
             >Directly open the Memory when not on a Paper's page</label
         ><br /><br />
 
@@ -97,7 +97,7 @@
             name="checkPdfTitle"
             value="checkPdfTitle"
         />
-        <label for="checkPdfTitle"> Change paper tab titles</label><br /><br />
+        <label for="checkPdfTitle" data-i18n="menu.changeTabTitles"> Change paper tab titles</label><br /><br />
 
         <input
             class="switch"
@@ -106,7 +106,7 @@
             name="checkScirate"
             value="checkScirate"
         />
-        <label for="checkScirate">Add a link to SciRate in the popup</label><br /><br />
+        <label for="checkScirate" data-i18n="menu.addSciRate">Add a link to SciRate in the popup</label><br /><br />
 
         <input
             class="switch"
@@ -115,7 +115,7 @@
             name="checkAlphaxiv"
             value="checkAlphaxiv"
         />
-        <label for="checkAlphaxiv">Add a link to AlphaXiv in the popup</label
+        <label for="checkAlphaxiv" data-i18n="menu.addAlphaXiv">Add a link to AlphaXiv in the popup</label
         ><br /><br />
 
         <input
@@ -125,7 +125,7 @@
             name="checkAr5iv"
             value="checkAr5iv"
         />
-        <label for="checkAr5iv">Add a link to ar5iv in the popup</label><br /><br />
+        <label for="checkAr5iv" data-i18n="menu.addAr5iv">Add a link to ar5iv in the popup</label><br /><br />
 
         <input
             class="switch"
@@ -134,11 +134,11 @@
             name="checkHuggingface"
             value="checkHuggingface"
         />
-        <label for="checkHuggingface"
+        <label for="checkHuggingface" data-i18n="menu.addHuggingFace"
             >Add a link to the HuggingFace paper page in the popup (Arxiv only)</label
         ><br /><br />
 
-        <h4>Functionalities</h4>
+        <h4 data-i18n="menu.functionalities">Functionalities</h4>
 
         <input
             class="switch"
@@ -147,7 +147,7 @@
             name="checkMdYearVenue"
             value="checkMdYearVenue"
         />
-        <label for="checkMdYearVenue"
+        <label for="checkMdYearVenue" data-i18n="menu.mdYearVenue"
             >Include a paper's venue and year when available in the Markdown link</label
         ><br /><br />
 
@@ -158,7 +158,7 @@
             name="checkPreferPdf"
             value="checkPreferPdf"
         />
-        <label for="checkPreferPdf"
+        <label for="checkPreferPdf" data-i18n="menu.preferPdf"
             >Favor PDFs for paper links (otherwise, links will point to a paper's
             abstract page)</label
         ><br /><br />
@@ -170,7 +170,7 @@
             name="checkPdfOnly"
             value="checkPdfOnly"
         />
-        <label for="checkPdfOnly"
+        <label for="checkPdfOnly" data-i18n="menu.pdfOnly"
             >Only record papers on their pdf pages, not from their abstracts</label
         ><br /><br />
 
@@ -181,7 +181,7 @@
             name="checkNoAuto"
             value="checkNoAuto"
         />
-        <label for="checkNoAuto"
+        <label for="checkNoAuto" data-i18n="menu.noAuto"
             >Disable automatic recording of papers. You will have to manually open the
             popup and click a button</label
         ><br /><br />
@@ -193,7 +193,7 @@
             name="checkEnterLocalPdf"
             value="checkEnterLocalPdf"
         />
-        <label for="checkEnterLocalPdf"
+        <label for="checkEnterLocalPdf" data-i18n="menu.enterLocalPdf"
             >When hitting Enter on a memory item, open a local PDF file when one is
             available instead of the the link to the paper.</label
         ><br /><br />
@@ -205,7 +205,7 @@
             name="checkStore"
             value="checkStore"
         />
-        <label for="checkStore"
+        <label for="checkStore" data-i18n="menu.storePdfs"
             >Download pdfs to PaperMemory's folder in your Downloads to be able to open
             them instead of re-downloading.</label
         ><br /><br />
@@ -216,12 +216,12 @@
             name="checkWebsiteParsing"
             value="checkWebsiteParsing"
         />
-        <label for="checkWebsiteParsing"
+        <label for="checkWebsiteParsing" data-i18n="menu.websiteParsing"
             >Enable parsing of arbitrary website by adding a button in the popup. This
             is still very experimental, see #146 on Github.</label
         ><br /><br />
 
-        <h4>Keyboard Navigation</h4>
+        <h4 data-i18n="menu.keyboardNav">Keyboard Navigation</h4>
 
         <p>Open the popup with <code>cmd/ctrl + shift + e</code> from any website.</p>
 
@@ -285,7 +285,7 @@
         </p>
     </div>
 
-    <h3 class="mt-4">⋗ Advanced</h3>
+    <h3 class="mt-4">⋗ <span data-i18n="menu.advanced">Advanced</span></h3>
 
     <p>
         Open the <a href="#" id="bib-matcher">PaperMemory BibMatcher</a> page to match

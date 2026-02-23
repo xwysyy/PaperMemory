@@ -92,6 +92,24 @@ global.svgActionsHoverTitles = {
 };
 
 /**
+ * Returns localized svgActionsHoverTitles using t() if available
+ */
+global.getSvgActionsHoverTitles = () => {
+    if (typeof t === "function") {
+        return {
+            edit: t("action.edit"),
+            copyMd: t("action.copyMd"),
+            copyBibtext: t("action.copyBibtex"),
+            visits: t("action.visits"),
+            openLocal: t("action.openLocal"),
+            copyLink: t("action.copyLink"),
+            copyHypeLink: t("action.copyHyperLink"),
+        };
+    }
+    return global.svgActionsHoverTitles;
+};
+
+/**
  * Shared configuration for the Tags' select2 inputs
  */
 global.select2Options = {

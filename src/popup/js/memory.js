@@ -38,7 +38,7 @@ const toggleTagsCollapse = (on) => {
         const details = /*html*/ `
             <div id="tags-list-container">
                 <details id="tags-list-details" style="outline: none !important;">
-                    <summary style="font-size: 0.85rem; color: #5f5f5f;">Tags list</summary>
+                    <summary style="font-size: 0.85rem; color: #5f5f5f;">${t("memory.tagsList")}</summary>
                     ${contents}
                 </details>
             </div>`;
@@ -73,13 +73,13 @@ const updatePopupPaperNoMemory = async (url) => {
 
     let noPaperHtml = /* html */ `
         <div class="no-paper-div">
-            <h3>This paper is not in your Memory&nbsp;
+            <h3>${t("noPaper.title")}&nbsp;
             <span id="no-paper-why-span">
                 <button class="code-font" id="no-paper-why-code">?</button>
             </span>
             </h3>
             <div>
-                <div>Here's a ${animal} for your trouble</div><br>
+                <div>${t("noPaper.hereIs", { animal })}</div><br>
                 <div id="ascii-art-div"><div style="text-align:">${ascii}</div></div>
             </div>
         </div>
@@ -99,7 +99,7 @@ const updatePopupPaperNoMemory = async (url) => {
         noPaperHtml += /* html */ `
             <div id="manual-trigger-wrapper">
                 ${ff_warning}
-                <div id="manual-trigger-btn">Try manual trigger</div>
+                <div id="manual-trigger-btn">${t("noPaper.tryManual")}</div>
                 <div id="manual-loader-container" class="pm-container" style='display: none;'>
                     <div class="sk-folding-cube">
                         <div class="sk-cube1 sk-cube"></div>
@@ -353,7 +353,7 @@ const saveNote = (id, note) => {
             findEl({ paperId: id, memoryItemClass: "memory-note-div" }),
             note
                 ? /*html*/ ` <div class="memory-note-div memory-item-faded">
-                      <span class="note-content-header">Note:</span>
+                      <span class="note-content-header">${t("form.note")}</span>
                       <span class="note-content">${note}</span>
                   </div>`
                 : /*html*/ `<div class="memory-note-div memory-item-faded"></div>`
@@ -422,7 +422,7 @@ const saveFavoriteItem = (id, favorite) => {
             const n = global.state.sortedPapers.filter((p) => p.favorite).length;
             const memSearch = findEl({ element: "memory-search" });
             if (memSearch) {
-                setPlaceholder(memSearch, `Search ${n} entries`);
+                setPlaceholder(memSearch, t("memory.searchEntries", { n }));
             }
         }
 
@@ -776,7 +776,7 @@ const makeMemoryHTML = async () => {
     // Fill-in input placeholder
     setPlaceholder(
         "memory-search",
-        `Search ${global.state.papersList.length} entries ...`
+        t("memory.searchEntries", { n: global.state.papersList.length })
     );
 
     displayMemoryTable();

@@ -469,7 +469,7 @@ const popupMain = async (url, is, manualTrigger = false, tab = null) => {
             await copyAndConfirmMemoryItem({
                 id,
                 textToCopy: link,
-                feedbackText: `${text} link copied!`,
+                feedbackText: t("feedback.linkCopied", { type: text }),
                 context: "popup",
             });
         });
@@ -484,7 +484,7 @@ const popupMain = async (url, is, manualTrigger = false, tab = null) => {
             await copyAndConfirmMemoryItem({
                 id,
                 textToCopy: link,
-                feedbackText: `${text} hyperlink copied!`,
+                feedbackText: t("feedback.hyperlinkCopiedType", { type: text }),
                 context: "popup",
                 hyperLinkTitle: paper.title,
             });
@@ -500,7 +500,7 @@ const popupMain = async (url, is, manualTrigger = false, tab = null) => {
             await copyAndConfirmMemoryItem({
                 id,
                 textToCopy: md,
-                feedbackText: `Markdown ${text} copied!`,
+                feedbackText: t("feedback.mdCopied", { type: text }),
                 context: "popup",
             });
         });
@@ -517,7 +517,7 @@ const popupMain = async (url, is, manualTrigger = false, tab = null) => {
             await copyAndConfirmMemoryItem({
                 id,
                 textToCopy: bibtex,
-                feedbackText: "Bibtex citation copied!",
+                feedbackText: t("feedback.bibtexCitationCopied"),
                 context: "popup",
             });
         });
@@ -544,7 +544,7 @@ const popupMain = async (url, is, manualTrigger = false, tab = null) => {
             // Add website parsing button, loader and error div
             const websiteParsingHtml = /* html */ `
                 <div id="website-trigger-wrapper">
-                    <div id="website-trigger-btn">Parse current website</div>
+                    <div id="website-trigger-btn">${t("popup.parseWebsite")}</div>
                     <div id="website-loader-container" class="pm-container" style='display: none;'>
                         <div class="sk-folding-cube">
                             <div class="sk-cube1 sk-cube"></div>
@@ -598,6 +598,10 @@ const query = { active: true, lastFocusedWindow: true };
 if (window.location.href.includes("popup")) {
     chrome.tabs.query(query, async (tabs) => {
         chrome.runtime.connect({ name: "PaperMemoryPopupSync" });
+        await initI18n();
+        addListener("lang-switch-btn", "click", () => {
+            setLang(i18n._lang === "en" ? "zh" : "en");
+        });
         const url = tabs[0].url;
         document.addEventListener("click", handleHideAllTitleTooltips);
 

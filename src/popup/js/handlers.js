@@ -86,7 +86,7 @@ const handleCopyMarkdownLink = async (e) => {
     await copyAndConfirmMemoryItem({
         id,
         textToCopy: md,
-        feedbackText: `Markdown ${text} link copied!`,
+        feedbackText: t("feedback.mdLinkCopied", { type: text }),
         context: global.state.memoryIsOpen ? "memory" : "popup",
     });
 };
@@ -104,7 +104,7 @@ const handleCopyBibtex = async (e) => {
     await copyAndConfirmMemoryItem({
         id,
         textToCopy: bibtexToString(bibobj),
-        feedbackText: "Bibtex copied!",
+        feedbackText: t("feedback.bibtexCopied"),
         context: global.state.memoryIsOpen ? "memory" : "popup",
     });
 };
@@ -119,7 +119,7 @@ const handleCopyPDFLink = async (e) => {
     await copyAndConfirmMemoryItem({
         id,
         textToCopy: link,
-        feedbackText: `${text} link copied!`,
+        feedbackText: t("feedback.linkCopied", { type: text }),
         context: global.state.memoryIsOpen ? "memory" : "popup",
     });
 };
@@ -132,7 +132,7 @@ const handleCopyHyperLink = async (e) => {
     await copyAndConfirmMemoryItem({
         id,
         textToCopy: link,
-        feedbackText: `Hyperlink copied!`,
+        feedbackText: t("feedback.hyperlinkCopied"),
         hyperLinkTitle: paper.title,
         context: global.state.memoryIsOpen ? "memory" : "popup",
     });
@@ -267,9 +267,9 @@ const handleFilterFavorites = () => {
         setMemorySortArrow("down");
         findEl(
             "memory-select"
-        ).innerHTML += `<option value="favoriteDate">Last favoured</option>`;
+        ).innerHTML += `<option value="favoriteDate">${t("memory.lastFavoured")}</option>`;
         const n = global.state.papersList.length;
-        setPlaceholder("memory-search", `Search ${n} entries...`);
+        setPlaceholder("memory-search", t("memory.searchEntries", { n }));
     } else {
         removeClass(
             findEl({ element: "filter-favorites" }).querySelector("svg"),
@@ -291,7 +291,7 @@ const handleFilterFavorites = () => {
             displayMemoryTable();
         }
         const n = global.state.sortedPapers.length;
-        setPlaceholder("memory-search", `Search ${n} entries...`);
+        setPlaceholder("memory-search", t("memory.searchEntries", { n }));
     }
 };
 
@@ -366,7 +366,7 @@ const handleConfirmDeleteModalClick = async (e) => {
     }
     setPlaceholder(
         "memory-search",
-        `Search ${global.state.papersList.length} entries ...`
+        t("memory.searchEntries", { n: global.state.papersList.length })
     );
     addListener("memory-switch", "click", handleMemorySwitchClick);
 };
@@ -629,7 +629,7 @@ const handlePopupKeydown = async (e) => {
         await copyAndConfirmMemoryItem({
             id,
             textToCopy: title,
-            feedbackText: "Title copied!",
+            feedbackText: t("feedback.titleCopied"),
             context: Boolean(paperItem) ? "memory" : "popup",
         });
     } else if (key === "d") {

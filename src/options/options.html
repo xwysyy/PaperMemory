@@ -21,11 +21,12 @@
 
     <div id="header">
         <div id="header-wrapper">
-            <h1>PaperMemory Options</h1>
+            <h1 data-i18n="options.title">PaperMemory Options</h1>
             <svg viewBox="0 0 24 24" class="pm-tabler-icon ml-3" id="header-icon">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <polyline points="13 3 13 10 19 10 11 21 11 14 5 14 13 3" />
             </svg>
+            <button id="lang-switch-btn" style="margin-left: auto; cursor: pointer; background: none; border: 1px solid #ccc; border-radius: 4px; padding: 2px 8px; font-size: 0.85rem;">EN/中</button>
         </div>
     </div>
     <div id="content">
@@ -76,7 +77,7 @@
         <hr>
 
         <div class="section">
-            <h2 id="paperswithcode-preferences">PapersWithCode preferences</h2>
+            <h2 id="paperswithcode-preferences" data-i18n="options.pwcPrefs">PapersWithCode preferences</h2>
 
             <div style="display: flex; align-items: center; height:4rem">
                 <span style="width: 35%">[1] Only store <em>official</em> code repositories: </span>
@@ -108,7 +109,7 @@
         <hr>
 
         <div class="section">
-            <h2 id="auto-tagging">Auto-tagging</h2>
+            <h2 id="auto-tagging" data-i18n="options.autoTagging">Auto-tagging</h2>
             <p>Provide Javascript regular expressions to automatically add tags to papers based on their titles and
                 authors. The
                 two columns represent an <code>AND</code>. Use two different entries for an <code>OR</code>.
@@ -160,7 +161,7 @@
         <hr>
 
         <div class="section">
-            <h2 id="preprint-matching">Preprint matching</h2>
+            <h2 id="preprint-matching" data-i18n="options.preprintMatching">Preprint matching</h2>
 
             <p>In this section, you can manually trigger the <a
                     href="https://github.com/vict0rsch/PaperMemory#preprints" rel="noopenner noreferrer"
@@ -201,7 +202,7 @@
         <hr>
 
         <div class="section">
-            <h2 id="select-sources">Select Sources</h2>
+            <h2 id="select-sources" data-i18n="options.selectSources">Select Sources</h2>
             <p>If you don't want to track papers from <emph>all</emph> the sources PaperMemory can handle, you can
                 disable them
                 here.
@@ -216,7 +217,7 @@
         <hr>
 
         <div class="section">
-            <h2 id="data-management">Data Management</h2>
+            <h2 id="data-management" data-i18n="options.dataManagement">Data Management</h2>
 
             <p>You can export your Memory as a <code>json</code> file or as a bibliography.</p>
             <p>To perform advanced data manipulation (paper merges, batch tagging etc.) you can process the exported
@@ -430,7 +431,7 @@
         <hr>
 
         <div class="section">
-            <h2 id="online-synchronization">Online synchronization</h2>
+            <h2 id="online-synchronization" data-i18n="options.onlineSync">Online synchronization</h2>
 
             <h4 id="sync-how-it-works">How it works</h4>
 
@@ -622,6 +623,7 @@
     <script src="../popup/js/select2.min.js"></script>
     <script src="highlight.min.js"></script>
 
+    <script src="../shared/js/utils/i18n.js"></script>
     <script src="../shared/js/utils/logTrace.js"></script>
     <script src="../shared/js/utils/miniquery.js"></script>
     <script src="../shared/js/utils/config.js"></script>

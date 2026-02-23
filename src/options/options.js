@@ -1287,6 +1287,10 @@ const setupModals = () => {
 // ----------------------------
 
 (async () => {
+    await initI18n();
+    addListener("lang-switch-btn", "click", () => {
+        setLang(i18n._lang === "en" ? "zh" : "en");
+    });
     setupSidebar();
     await initSyncAndState();
     makeTOC();

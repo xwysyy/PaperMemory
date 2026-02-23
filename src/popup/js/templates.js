@@ -8,14 +8,14 @@ const getPaperInfoTable = (paper) => {
     const addDate = new Date(paper.addDate).toLocaleString().replace(",", "");
     const lastOpenDate = new Date(paper.lastOpenDate).toLocaleString().replace(",", "");
     const tableData = [
-        ["Added", addDate],
-        ["Last open", lastOpenDate],
-        ["Visits", paper.count],
-        ["Source", global.knownPaperPages[paper.source].name],
+        [t("paper.added"), addDate],
+        [t("paper.lastOpen"), lastOpenDate],
+        [t("paper.visits"), paper.count],
+        [t("paper.source"), global.knownPaperPages[paper.source].name],
     ];
     if (paper.venue)
         tableData.push([
-            "Publication",
+            t("paper.publication"),
             `<strong>${paper.venue} ${paper.year}</strong>`,
         ]);
     return /*html*/ `
@@ -46,13 +46,12 @@ const getMemoryItemHTML = (paper) => {
     const tags = new Set(paper.tags);
     const tagOptions = getTagsOptions(paper);
     const favoriteClass = paper.favorite ? "favorite" : "";
-    const titles = { ...global.svgActionsHoverTitles };
-    // titles behave differently in build/watch mode. This works in build
-    titles.pdfLink = `Open tab to ${paper.title}`;
-    titles.copyLink = `Copy URL to the paper's ${
-        global.state.prefs.checkPreferPdf ? "PDF" : "abstract"
-    }`;
-    titles.displayId = `Click to see metadata`;
+    const titles = { ...global.getSvgActionsHoverTitles() };
+    titles.pdfLink = t("action.openTabTo", { title: paper.title });
+    titles.copyLink = t("action.copyUrlTo", {
+        type: global.state.prefs.checkPreferPdf ? "PDF" : "abstract",
+    });
+    titles.displayId = t("action.clickToSeeMetadata");
     let codeDiv = /*html*/ `
         <small class="memory-item-faded">
 
@@ -72,7 +71,7 @@ const getMemoryItemHTML = (paper) => {
     if (paper.note) {
         noteDiv = /*html*/ `
             <div class="memory-note-div memory-item-faded">
-                <span class="note-content-header">Note:</span>
+                <span class="note-content-header">${t("form.note")}</span>
                 <span class="note-content">${note}</span>
             </div>
         `;
@@ -104,7 +103,7 @@ const getMemoryItemHTML = (paper) => {
         scirate = /*html*/ `
         <div
             class="memory-item-scirate memory-item-svg-div"
-            title="Open on SciRate"
+            title='${t("action.openSciRate")}'
         >
             ${tablerSvg("messages", "", ["memory-icon-svg"])}
         </div>`;
@@ -115,7 +114,7 @@ const getMemoryItemHTML = (paper) => {
         alphaxiv = /*html*/ `
         <div
             class="memory-item-alphaxiv memory-item-svg-div"
-            title="Open on AlphaXiv"
+            title='${t("action.openAlphaXiv")}'
         >
             ${tablerSvg("alphaxiv", "", ["memory-icon-svg", "alphaxiv-icon"])}
         </div>`;
@@ -126,7 +125,7 @@ const getMemoryItemHTML = (paper) => {
         ar5iv = /*html*/ `
         <div
             class="memory-item-ar5iv memory-item-svg-div"
-            title="Open on ar5iv"
+            title='${t("action.openAr5iv")}'
         >
             ${tablerSvg("ar5iv", "", ["memory-icon-svg"])}
         </div>`;
@@ -137,7 +136,7 @@ const getMemoryItemHTML = (paper) => {
         huggingface = /*html*/ `
         <div
             class="memory-item-huggingface memory-item-svg-div"
-            title="Open on HuggingFace Papers"
+            title='${t("action.openHuggingFace")}'
         >
             ${tablerSvg("huggingface", "", ["memory-icon-svg"])}
         </div>`;
@@ -247,34 +246,34 @@ const getMemoryItemHTML = (paper) => {
                 <div class="item-note">
                     <form class="form-note">
                         <div class="flex-center-start">
-                            <span class="label">Code:</span>
+                            <span class="label">${t("form.code")}</span>
                             <input
                                 type="text"
                                 class="form-code-input"
                                 value="${paper.codeLink || ""}"
-                                placeholder="Add link"
+                                placeholder="${t("form.addLink")}"
                             />
                         </div>
                         <div class="flex-center-start">
-                            <span class="label">Note:</span>
+                            <span class="label">${t("form.note")}</span>
                             <textarea
                                 rows="2"
                                 class="form-note-textarea"
-                                placeholder="Anything to note?"
+                                placeholder="${t("form.anythingToNote")}"
                             >
 ${note}</textarea
                             >
                         </div>
                         <div class="form-note-buttons">
                             <button class="cancel-note-form back-to-focus">
-                                Done
+                                ${t("form.done")}
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div class="memory-delete" title="Delete from Memory">-</div>
+            <div class="memory-delete" title="${t("action.deleteFromMemory")}">-</div>
         </div>
     `;
 };
@@ -299,7 +298,7 @@ const getPopupEditFormHTML = (paper) => {
             <div
                 style="width: 100%; display: flex; justify-content: space-between; align-items: center;"
             >
-                <span class="label">Tags:</span>
+                <span class="label">${t("form.tags")}</span>
                 <select
                     id="popup-item-tags--${id}"
                     class="memory-item-tags"
@@ -314,22 +313,22 @@ const getPopupEditFormHTML = (paper) => {
                 style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 8px; flex-direction: column;"
             >
                 <div class="flex-center-start w-100 mr-0">
-                    <span class="label">Code:</span>
+                    <span class="label">${t("form.code")}</span>
                     <input
                         id="popup-form-codeLink--${id}"
                         type="text"
                         class="form-code-input mt-0"
                         value="${paper.codeLink || ""}"
-                        placeholder="Add code link"
+                        placeholder="${t("form.addCodeLink")}"
                     />
                 </div>
                 <div class="flex-center-start w-100 mr-0">
-                    <span class="label">Note:</span>
+                    <span class="label">${t("form.note")}</span>
                     <textarea
                         rows="2"
                         class="popup-form-note-textarea"
                         id="popup-form-note-textarea--${id}"
-                        placeholder="Anything to note?"
+                        placeholder="${t("form.anythingToNote")}"
                     >
 ${note}</textarea
                     >
@@ -341,7 +340,7 @@ ${note}</textarea
                 <div
                     style="display: flex; justify-content: flex-start; align-items: center"
                 >
-                    <label class="label" for="checkFavorite">Favorite: </label>
+                    <label class="label" for="checkFavorite">${t("form.favorite")} </label>
                     <input
                         ${checked}
                         class="switch"
@@ -351,7 +350,7 @@ ${note}</textarea
                         value="checkFavorite"
                     />
                 </div>
-                <div id="popup-delete-paper" title="Delete paper from Memory">
+                <div id="popup-delete-paper" title="${t("action.deletePaperFromMemory")}">
                     <svg
                         width="25"
                         height="25"
@@ -399,7 +398,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-scirate--${id}"
-            title="Open on SciRate"
+            title='${t("action.openSciRate")}'
         >
             ${tablerSvg("messages", "", ["popup-click-svg"])}
         </div>`;
@@ -416,7 +415,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-alphaxiv--${id}"
-            title="Open on AlphaXiv"
+            title='${t("action.openAlphaXiv")}'
         >
             ${tablerSvg("alphaxiv", "", ["popup-click-svg", "alphaxiv-icon"])}
         </div>`;
@@ -433,7 +432,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-ar5iv--${id}"
-            title="Open on ar5iv"
+            title='${t("action.openAr5iv")}'
         >
             ${tablerSvg("ar5iv", "", ["popup-click-svg"])}
         </div>`;
@@ -450,7 +449,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-huggingface--${id}"
-            title="Open on HuggingFace Papers"
+            title='${t("action.openHuggingFace")}'
         >
             ${tablerSvg("huggingface", "", ["popup-click-svg"])}
         </div>`;
@@ -464,7 +463,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-openLocal--${id}"
-            title="Open downloaded pdf"
+            title='${t("action.openLocal")}'
         >
             ${tablerSvg("vocabulary", "", ["popup-click-svg"])}
         </div>
@@ -474,7 +473,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-download--${id}"
-            title="Download pdf"
+            title='${t("action.downloadPdf")}'
         >
             ${tablerSvg("file-download", "", ["popup-click-svg"])}
         </div>
@@ -487,7 +486,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-link--${id}"
-            title="Open Paper ${name} Page"
+            title='${t("action.openPaper", { name })}'
         >
             ${tablerSvg("external-link", "", ["popup-click-svg"])}
         </div>`;
@@ -503,7 +502,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-copy-link--${id}"
-            title="Copy link to paper"
+            title='${t("action.copyLinkToPaper")}'
         >
             ${tablerSvg("link", "", ["popup-click-svg"])}
         </div>
@@ -511,7 +510,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-copy-hyperlink--${id}"
-            title="Copy hyperlink to paper"
+            title='${t("action.copyHyperlinkToPaper")}'
         >
             ${tablerSvg("device-desktop-code", "", ["popup-click-svg"])}
         </div>
@@ -520,7 +519,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-md--${id}"
-            title="Copy Markdown-formatted link"
+            title='${t("action.copyMd")}'
         >
             ${tablerSvg("markdown", "", ["popup-click-svg"])}
         </div>
@@ -529,7 +528,7 @@ const getPopupPaperIconsHTML = (paper, currentUrl, is) => {
             tabindex="0"
             class="memory-item-svg-div"
             id="popup-memory-item-bibtex--${id}"
-            title="Copy Bibtex citation"
+            title='${t("action.copyBibtex")}'
         >
             ${tablerSvg("math-function", "", ["popup-click-svg"])}
         </div>
