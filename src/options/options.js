@@ -1288,6 +1288,8 @@ const setupModals = () => {
 
 (async () => {
     await initI18n();
+    const fmLink = document.getElementById("options-full-memory-link");
+    if (fmLink) fmLink.href = chrome.runtime.getURL("src/fullMemory/fullMemory.html");
     addListener("lang-switch-btn", "click", () => {
         setLang(i18n._lang === "en" ? "zh" : "en");
     });

@@ -229,20 +229,8 @@ const editManualWebsite = (parsedPaper, url) => {
  * @param {str} url Currently focused and active tab's url.
  */
 const popupMain = async (url, is, manualTrigger = false, tab = null) => {
-    console.log(navigator.userAgent);
-    if (navigator.userAgent === "PuppeteerAgent") {
-        info("Is puppet");
-        // style(document.body, "min-width", "500px");
-        // style(document.body, "max-width", "500px");
-        // style(document.body, "width", "500px");
-        // style("popup-modal-wrapper", "min-width", "500px");
-        // style("popup-modal-wrapper", "max-width", "500px");
-        // style("popup-modal-wrapper", "width", "500px");
-    }
-
     addListener(document, "keydown", handlePopupKeydown);
 
-    console.log("manualTrigger: ", manualTrigger);
     if (manualTrigger) {
         // manual trigger: do not re-create standard listeners
         // but update the current state and rebuild the Memory's HTML
@@ -284,8 +272,6 @@ const popupMain = async (url, is, manualTrigger = false, tab = null) => {
     });
     fillUserGuideShortcuts();
 
-    // Set PDF title function
-    // setAndHandleCustomPDFFunction(menu);
 
     // Display popup metadata
     if (Object.values(is).some((i) => i)) {

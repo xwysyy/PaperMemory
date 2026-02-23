@@ -11,14 +11,7 @@ if (typeof importScripts === "function") {
         "../shared/js/utils/state.js",
         "../shared/js/utils/parsers.js"
     );
-    console.log("Scripts loaded.");
 } else {
-    const isFirefox = navigator.userAgent.search("Firefox") > -1;
-    if (!isFirefox) {
-        console.log("Error importing scripts in background.js. This is OK on Firefox.");
-    } else {
-        console.log("Error importing scripts (`importScripts`) in background.js.");
-    }
 }
 
 var paperTitles = {};
@@ -85,7 +78,7 @@ if (window.location.href.startsWith("file://")){
         document.getElementsByTagName('head')[0].appendChild(link);
     }
     setTimeout(() => {
-        link.href = "https://github.com/vict0rsch/PaperMemory/blob/master/icons/favicon-192x192.png?raw=true"
+        link.href = chrome.runtime.getURL("icons/favicon-192x192.png")
     }, 350);
 }`;
 

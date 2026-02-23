@@ -143,7 +143,7 @@ const i18n = {
 
             // Options page
             "options.title": "PaperMemory Options",
-            "options.introHtml": '<em>These customization options are complementary to those available in the popup such as Dark Theme or Notifications. You can also access your full-screen memory <a target="_blank" href="chrome-extension://ehchlpggdaffcncbeopdopnndhdjelbc/src/fullMemory/fullMemory.html">here</a></em>.',
+            "options.introHtml": '<em>These customization options are complementary to those available in the popup such as Dark Theme or Notifications. You can also access your full-screen memory <a target="_blank" id="options-full-memory-link" href="#">here</a></em>.',
             "options.warningHtml": '<em><strong>Warning:</strong> features which alter your Memory such as publication matching, importing papers or overwriting your Memory should not be triggered while you are browsing papers. This would have unpredictable effects as you would concurrently write to the same database.</em>',
 
             // Options - PWC
@@ -168,7 +168,7 @@ const i18n = {
 
             // Options - Preprint matching
             "options.preprintMatching": "Preprint matching",
-            "options.preprintDesc": 'In this section, you can manually trigger the <a href="https://github.com/vict0rsch/PaperMemory#preprints" rel="noopenner noreferrer" target="_blank">preprint matching procedure</a> to discover publications from Arxiv pre-prints and code for your papers from paperswithcode.com.',
+            "options.preprintDesc": 'In this section, you can manually trigger the <a href="#preprint-matching" rel="noopenner noreferrer" target="_blank">preprint matching procedure</a> to discover publications from Arxiv pre-prints and code for your papers from paperswithcode.com.',
             "options.preprintNote": 'A paper\'s <code>note</code> will only be updated to <code>Accepted @ venue (year) -- [source]</code> <strong><em>if</em></strong>&nbsp; you don\'t have a custom note already.',
             "options.preprintCount": 'You currently have <span id="preprints-number"></span> papers missing a publication venue.',
             "options.startMatching": "Start the matching procedure",
@@ -214,7 +214,7 @@ const i18n = {
             "options.startSyncBackup": "In case anything goes wrong, we'll still download a backup locally",
             "options.stopSyncTitle": "STOP syncing your data to Github?",
             "options.stopSyncDesc": "The Gist will not be deleted, but changes to your Memory will not be synced anymore.",
-            "options.footerText": '<em>If you like PaperMemory please consider sharing, starring on Github and rating on the Chrome/Firefox webstores</em>',
+            "options.footerText": '',
 
             // Options - Modals
             "options.modalConflictTitle": "Syncronization conflict",
@@ -227,7 +227,7 @@ const i18n = {
             "options.modalCancelSync": "Cancel synchronization",
             "options.modalWarnP1": "You are about to enable Syncing across devices with Github Gists.",
             "options.modalWarnP2": "This popup is simply to make sure everything is clear on what will happen",
-            "options.modalWarnP3": 'In particular, make sure you have read and understood the <a href="chrome-extension://ehchlpggdaffcncbeopdopnndhdjelbc/src/options/options.html#sync-how-it-works" id="modal-sync-warning-description">description of the feature</a> before continuing.',
+            "options.modalWarnP3": 'In particular, make sure you have read and understood the <a href="#sync-how-it-works" id="modal-sync-warning-description">description of the feature</a> before continuing.',
             "options.modalWarnAdditional": 'Additionally:<ul><li>Syncronization typically takes approximately 2-3 seconds to <em>Pull</em> or to <em>Push</em> the data.</li><li>Therefore, if you modify your memory (add tags, notes, delete a paper) from the popup and then close it, your modifications will be lost so you have to make sure the app is done syncing before leaving the popup.</li><li>In most cases, the above is not critical. But it may explain why you feel like some of your actions are not recored or overwritten.</li></ul>',
             "options.modalWarnInterval": 'In general, you can consider that PaperMemory expects around <strong>5-10 seconds between devices</strong> to work properly.',
             "options.modalWarnCancel": "Cancel Synchronization.",
@@ -374,7 +374,7 @@ const i18n = {
 
             // Options page
             "options.title": "PaperMemory 选项",
-            "options.introHtml": '<em>这些自定义选项是弹窗中可用选项（如深色主题或通知）的补充。你也可以在<a target="_blank" href="chrome-extension://ehchlpggdaffcncbeopdopnndhdjelbc/src/fullMemory/fullMemory.html">这里</a>访问全屏记忆库</em>。',
+            "options.introHtml": '<em>这些自定义选项是弹窗中可用选项（如深色主题或通知）的补充。你也可以在<a target="_blank" id="options-full-memory-link" href="#">这里</a>访问全屏记忆库</em>。',
             "options.warningHtml": '<em><strong>警告：</strong>修改记忆库的功能（如出版物匹配、导入论文或覆盖记忆库）不应在浏览论文时触发，否则会因并发写入同一数据库而产生不可预测的效果。</em>',
 
             // Options - PWC
@@ -399,7 +399,7 @@ const i18n = {
 
             // Options - Preprint matching
             "options.preprintMatching": "预印本匹配",
-            "options.preprintDesc": '在此部分，你可以手动触发<a href="https://github.com/vict0rsch/PaperMemory#preprints" rel="noopenner noreferrer" target="_blank">预印本匹配流程</a>，从 Arxiv 预印本中发现出版物，并从 paperswithcode.com 获取论文代码。',
+            "options.preprintDesc": '在此部分，你可以手动触发<a href="#preprint-matching" rel="noopenner noreferrer" target="_blank">预印本匹配流程</a>，从 Arxiv 预印本中发现出版物，并从 paperswithcode.com 获取论文代码。',
             "options.preprintNote": '论文的 <code>note</code> 仅在你没有自定义备注时才会更新为 <code>Accepted @ venue (year) -- [source]</code>。',
             "options.preprintCount": '你目前有 <span id="preprints-number"></span> 篇论文缺少出版信息。',
             "options.startMatching": "开始匹配流程",
@@ -445,7 +445,7 @@ const i18n = {
             "options.startSyncBackup": "如果出现问题，我们仍会在本地下载备份",
             "options.stopSyncTitle": "停止将数据同步到 Github？",
             "options.stopSyncDesc": "Gist 不会被删除，但记忆库的更改将不再同步。",
-            "options.footerText": '<em>如果你喜欢 PaperMemory，请考虑分享、在 Github 上加星以及在 Chrome/Firefox 商店评分</em>',
+            "options.footerText": '',
 
             // Options - Modals
             "options.modalConflictTitle": "同步冲突",
@@ -458,7 +458,7 @@ const i18n = {
             "options.modalCancelSync": "取消同步",
             "options.modalWarnP1": "你即将启用通过 Github Gists 的跨设备同步。",
             "options.modalWarnP2": "此弹窗只是为了确保你清楚接下来会发生什么",
-            "options.modalWarnP3": '请确保你已阅读并理解<a href="chrome-extension://ehchlpggdaffcncbeopdopnndhdjelbc/src/options/options.html#sync-how-it-works" id="modal-sync-warning-description">功能说明</a>后再继续。',
+            "options.modalWarnP3": '请确保你已阅读并理解<a href="#sync-how-it-works" id="modal-sync-warning-description">功能说明</a>后再继续。',
             "options.modalWarnAdditional": '此外：<ul><li>同步通常需要约 2-3 秒来<em>拉取</em>或<em>推送</em>数据。</li><li>因此，如果你从弹窗修改记忆库（添加标签、备注、删除论文）后立即关闭，你的修改可能会丢失，请确保同步完成后再离开弹窗。</li><li>大多数情况下这不是关键问题，但这可能解释了为什么你觉得某些操作没有被记录或被覆盖。</li></ul>',
             "options.modalWarnInterval": '一般来说，PaperMemory 需要设备间间隔约 <strong>5-10 秒</strong>才能正常工作。',
             "options.modalWarnCancel": "取消同步",
