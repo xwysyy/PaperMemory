@@ -31,7 +31,7 @@ const getIdentifier = async () => {
  * @param {boolean} options.patError - Whether to raise an error if no PAT
  * @returns {Promise<{ ok: boolean, payload: { file: { filename: string, raw_url: string, content: object }, pat: string, gistId: string } }>}
  */
-const getGist = async ({ pat, store = true, patError = true }) => {
+const getGist = async ({ pat, store = true, patError = true } = {}) => {
     try {
         if (!pat) pat = await getPat(patError);
 
