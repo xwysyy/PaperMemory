@@ -19,8 +19,6 @@ const openMenu = () => {
     dispatch("menu-switch", "blur");
     setHTML("menu-switch", tablerSvg("circle-x", "close-menu-btn", classes));
     global.state.prefsIsOpen = true;
-    setHTML("pm-version", chrome.runtime.getManifest().version);
-    findEl({ element: "menu-feedback-header" }).focus();
 };
 /**
  * Parses prefs options from the storage and adds events listeners for their change.
@@ -109,21 +107,6 @@ const setStandardPopupClicks = () => {
         });
     });
 
-    addListener("whats-new-container", "click", () => {
-        chrome.storage.local.get("whatsnew", ({ whatsnew }) => {
-            const version = chrome.runtime.getManifest().version;
-            if (typeof whatsnew === "undefined") {
-                whatsnew = {};
-            }
-            if (!whatsnew.hasOwnProperty(version)) {
-                hideId("whats-new-marker");
-            }
-            chrome.storage.local.set({
-                whatsnew: { ...whatsnew, [version]: true },
-            });
-            showPopupModal("whatsnew");
-        });
-    });
     addListener("keyboardShortcuts", "click", () => {
         // button on the home page when not on a known source
         showPopupModal("keyboard");
@@ -258,13 +241,6 @@ const popupMain = async (url, is, manualTrigger = false, tab = null) => {
     }
 
     addListener(document, "keydown", handlePopupKeydown);
-
-    chrome.storage.local.get("whatsnew", ({ whatsnew }) => {
-        const version = chrome.runtime.getManifest().version;
-        if (!whatsnew || !whatsnew.hasOwnProperty(version)) {
-            showId("whats-new-marker");
-        }
-    });
 
     console.log("manualTrigger: ", manualTrigger);
     if (manualTrigger) {
